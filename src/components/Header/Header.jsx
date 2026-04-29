@@ -1,7 +1,10 @@
 function Header() {
     return (
         <header>
-            Hello
+            <div>
+                <p>Welcone</p>
+                <h3></h3>
+            </div>
         </header>
     )
 }

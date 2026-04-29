@@ -1,9 +1,14 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
 .login-page {
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url(./src/assets/login_background.jpeg);
+    background-image: linear-gradient(135deg, rgba(0,255,200,0.4), rgba(0,100,255,0.4)), url(./src/assets/login_background.jpeg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -15,7 +20,6 @@
     text-align: center;
     width: 50vh;
     height: 60vh;
-    border: 2px solid black;
     border-radius: 12px;
     box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
     background: transparent;
@@ -25,7 +29,7 @@
 
 .login-card:hover {
     transform: scale3d(2.05);
-    box-shadow: 70px 70px 70px rgba(0, 0, 0, 0.9);
+    box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.9);
 }
 
 .login-card h1 {
@@ -69,6 +73,8 @@
     margin: 12px;
     padding: 16px;
     border-radius: 10px;
+    border: none;
+    background-color: #cfd1d47d;
 }
 
 

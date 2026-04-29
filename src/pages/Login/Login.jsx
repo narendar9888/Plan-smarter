@@ -16,6 +16,10 @@ function Login({ onLogin }){
         return;
     }
 
+    let user = JSON.stringify({name,email});
+
+    localStorage.setItem("user" , user);
+
     onLogin({
         name,
         email,
@@ -37,7 +41,6 @@ function Login({ onLogin }){
                     onChange={(e) => setName(e.target.value)}
                     />
 
-                    <br />
 
                     <input 
                     type="email" 
@@ -45,7 +48,6 @@ function Login({ onLogin }){
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     />
-                    <br />
 
                     <input 
                     type="password" 
