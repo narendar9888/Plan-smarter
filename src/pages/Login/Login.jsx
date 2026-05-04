@@ -16,15 +16,14 @@ function Login({ onLogin }){
         return;
     }
 
-    let user = JSON.stringify({name,email});
+    const user = { name, email };
+        localStorage.setItem("user", JSON.stringify(user));
 
-    localStorage.setItem("user" , user);
+        if (onLogin) {
+            onLogin(user);
+        }
+    };
 
-    onLogin({
-        name,
-        email,
-    });
-}
 
     return (
         <div className="login-page">
@@ -39,6 +38,7 @@ function Login({ onLogin }){
                     placeholder="Enter Name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
+                    required
                     />
 
 
