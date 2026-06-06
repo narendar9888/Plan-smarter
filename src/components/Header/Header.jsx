@@ -1,11 +1,14 @@
-import {Bell, Search } from "lucide-react";
+import {Bell, Search, User } from "lucide-react";
 import "./Header.css"
 function Header() {
+   const user = JSON.parse(localStorage.getItem("user"));
+   const username = user?.name || "Neetu";
+
     return (
         <header className="header">
             <div className="username">
                 <p>Welcome,</p>
-                <h3>{}</h3>
+                <h3>{username}</h3>
             </div>
 
             <div className="search-box">

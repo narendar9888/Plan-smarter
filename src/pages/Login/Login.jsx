@@ -17,7 +17,6 @@ function Login({ onLogin }){
     }
 
     const user = { name, email };
-        localStorage.setItem("user", JSON.stringify(user));
 
         if (onLogin) {
             onLogin(user);
