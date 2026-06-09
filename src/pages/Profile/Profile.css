@@ -169,6 +169,26 @@ h2 {
   padding: 20px 0px;
 }
 
+.form-row {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.form-row label {
+  margin: 0;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.form-row input {
+  width: 100%;
+  padding: 12px 15px;
+  box-sizing: border-box;
+}
+
 .save-btu {
   border: none;
   border-radius: 10px;
@@ -205,3 +225,203 @@ h2 {
   background-color: #584ef8;
 }
 
+.skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 25px 0px;
+  border-radius: 10px; 
+}
+
+.skills-container:hover {
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
+  border: 1px solid #6c63ff;
+}
+
+.skill-tag {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.08);
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+}
+
+.remove-skill {
+  border: none;
+  background: transparent;
+  color: #ff5f5f;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.add-skill-box {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.add-skill-box input {
+  flex: 1;
+}
+
+.skill-btu {
+  height: 55px;
+  padding: 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: #6c63ff;
+  color: white;
+  cursor: pointer;
+}
+
+.experience-list {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.experience-card {
+  padding: 16px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.experience-card h4 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.experience-card p {
+  margin: 6px 0;
+  opacity: 0.8;
+}
+
+.experience-card span {
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+.experience-card input {
+  margin-bottom: 10px;
+}
+
+.add-exp-btn {
+  margin-top: 10px;
+  height: 45px;
+  border: none;
+  border-radius: 10px;
+  background-color: #6c63ff;
+  color: white;
+  cursor: pointer;
+}
+
+.delete-exp {
+  background: #ff4d4f;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* 
+
+body.dark {
+  background: #121212;
+}
+
+body.dark .profile-page {
+  background: #121212;
+}
+
+body.dark .card,
+body.dark .stat-card,
+body.dark .tabs button {
+  background: #1d1d1d;
+  color: white;
+}
+
+body.dark .tabs button.active {
+  background: #6c63ff;
+}
+
+body.dark .card p,
+body.dark .card label {
+  color: #ccc;
+}
+
+body.dark input,
+body.dark textarea,
+body.dark select {
+  background: #2b2b2b;
+  color: white;
+  border-color: #444;
+}
+
+.card,
+.stat-card,
+.profile-header {
+  animation: fadeIn 0.5s ease;
+}
+}   */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+@media (max-width: 992px) {
+
+  .profile-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .profile-left {
+    flex-direction: column;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+
+  .profile-page {
+    padding: 15px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tabs {
+    flex-direction: column;
+  }
+
+  .tabs button {
+    width: 100%;
+  }
+
+  .profile-image {
+    width: 110px;
+    height: 110px;
+  }
+
+  .profile-info h2 {
+    font-size: 24px;
+  }
+}

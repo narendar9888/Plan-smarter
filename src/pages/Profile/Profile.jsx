@@ -15,7 +15,7 @@ import {
 function Profile() {
     const [activeTab, setActiveTab] = useState("about");
     const [isEditing, setIsEditing] = useState(false);
-
+    const [newSkill, setNewSkill] = useState("");
     const [userData, setUserData] = useState({
         fname: "Guest",
         lname: "Kumar",
@@ -28,16 +28,29 @@ function Profile() {
         country: "India",
         darkMode: false,
         noti: false,
-
+        skills: ["React", "JavaScript", "UI Design"],
+        experience: [
+            {
+            company: "Plan Smarter",
+            role: "Frontend Developer",
+            years: "2024 - Present",
+            },
+        ],
     });
 
-    useEffect(() =>{
+    useEffect(() => {
         const savedData = localStorage.getItem("profileData");
 
-        if (savedData){
-            setUserData(JSON.parse(savedData));
+        if (savedData) {
+            const parsedData = JSON.parse(savedData);
+
+            setUserData(prev => ({
+            ...prev,
+            ...parsedData,
+            skills: parsedData.skills || [],
+            }));
         }
-    },[])
+    }, []);
 
 
     const handleSave = () => {
@@ -63,6 +76,61 @@ function Profile() {
             });
         };
         rander.readAsDataURL(file);
+    };
+    const addSkill = () => {
+        if (newSkill.trim() === "") return;
+
+        setUserData({
+            ...userData,
+            skills: [...userData.skills, newSkill.trim()],
+        });
+
+        setNewSkill("");
+        };
+
+        const removeSkill = (index) => {
+        setUserData({
+            ...userData,
+            skills: userData.skills.filter((_, i) => i !== index),
+        });
+    };
+
+    const addExperience = () => {
+        setUserData({
+            ...userData,
+            experience: [
+            ...(userData.experience || []),
+            {
+                company: "",
+                role: "",
+                years: "",
+            },
+            ],
+        });
+        };
+
+        const removeExperience = (index) => {
+        setUserData({
+            ...userData,
+            experience: userData.experience.filter(
+            (_, i) => i !== index
+            ),
+        });
+        };
+
+        const updateExperience = (
+        index,
+        field,
+        value
+        ) => {
+        const updated = [...userData.experience];
+
+        updated[index][field] = value;
+
+        setUserData({
+            ...userData,
+            experience: updated,
+        });
     };
 
     return (
@@ -197,72 +265,196 @@ function Profile() {
                                 <p>{userData.bio}</p>
                             )}
                             <h3>Skills</h3>
+
+                                <div className="skills-container">
+                                {(userData.skills || []).map((skill, index) => (
+                                    <div key={index} className="skill-tag">
+                                    {skill}
+
+                                    {isEditing && (
+                                        <button
+                                        className="remove-skill"
+                                        onClick={() => removeSkill(index)}
+                                        >
+                                        ×
+                                        </button>
+                                    )}
+                                    </div>
+                                ))}
+                                </div>
+
+                                {isEditing && (
+                                <div className="add-skill-box">
+                                    <input
+                                    type="text"
+                                    placeholder="Add skill..."
+                                    value={newSkill}
+                                    onChange={(e) => setNewSkill(e.target.value)}
+                                    />
+
+                                    <button 
+                                    className="skill-btu"
+                                    onClick={addSkill}>
+                                    Add
+                                    </button>
+                                </div>
+                                )}
+
+                                <h3>Work Experience</h3>
+
+                                    <div className="experience-list">
+                                    {(userData.experience || []).map(
+                                        (exp, index) => (
+                                        <div
+                                            key={index}
+                                            className="experience-card"
+                                        >
+                                            {isEditing ? (
+                                            <>
+                                                <input
+                                                type="text"
+                                                placeholder="Company"
+                                                value={exp.company}
+                                                onChange={(e) =>
+                                                    updateExperience(
+                                                    index,
+                                                    "company",
+                                                    e.target.value
+                                                    )
+                                                }
+                                                />
+
+                                                <input
+                                                type="text"
+                                                placeholder="Role"
+                                                value={exp.role}
+                                                onChange={(e) =>
+                                                    updateExperience(
+                                                    index,
+                                                    "role",
+                                                    e.target.value
+                                                    )
+                                                }
+                                                />
+
+                                                <input
+                                                type="text"
+                                                placeholder="Years"
+                                                value={exp.years}
+                                                onChange={(e) =>
+                                                    updateExperience(
+                                                    index,
+                                                    "years",
+                                                    e.target.value
+                                                    )
+                                                }
+                                                />
+
+                                                <button
+                                                className="delete-exp"
+                                                onClick={() =>
+                                                    removeExperience(index)
+                                                }
+                                                >
+                                                Remove
+                                                </button>
+                                            </>
+                                            ) : (
+                                            <>
+                                                <h4>{exp.role}</h4>
+                                                <p>{exp.company}</p>
+                                                <span>{exp.years}</span>
+                                            </>
+                                            )}
+                                        </div>
+                                        )
+                                    )}
+
+                                    {isEditing && (
+                                        <button
+                                        className="add-exp-btn"
+                                        onClick={addExperience}
+                                        >
+                                         Add Experience
+                                        </button>
+                                    )}
+                                </div>
                             </div>
                         )}
                         {activeTab === "personal" && (
                             <div className="card">
 
                                 <h3>Personal Informations</h3>
-
-                                <label>First Name</label>
-                                <input type="text"
-                                value={userData.fname}
-                                disabled={!isEditing}
-                                onChange={(e) => 
-                                    setUserData ({
-                                        ...userData,
-                                        fname: e.target.value
-                                    })
-                                }
-                            />
-
-                                <label>Last Name</label>
-                                <input type="text"
-                                value={userData.lname}
-                                disabled={!isEditing}
-                                onChange={(e) => 
-                                    setUserData ({
-                                        ...userData,
-                                        lname: e.target.value
-                                    })
-                                }
-                            />
-
-                                <label>Email</label>
-                                <input
-                                    value={userData.email}
+                                <div className="form-row">
+                                    <label>First Name</label>
+                                    <input type="text"
+                                    value={userData.fname}
                                     disabled={!isEditing}
                                     onChange={(e) => 
-                                        setUserData (
-                                            {...userData,
-                                                email: e.target.value,
-                                            })
+                                        setUserData ({
+                                            ...userData,
+                                            fname: e.target.value
+                                        })
                                         }
                                     />
+                                </div>
 
-                                <label>Phone Number</label>
-                                <input
-                                value={userData.phone}
-                                disabled={!isEditing}
-                                onChange={(e) =>
-                                    setUserData (
-                                        {...userData,
-                                            phone: e.target.value
-                                        }
-                                    )
-                                }
-                                />
-                                <label>Location</label>
-                                <input
-                                value={userData.location}
-                                disabled={!isEditing}
-                                onChange={(e) => 
-                                    setUserData ({
-                                        ...userData,
-                                        location: e.target.value,
-                                    })
-                                }
-                                />
+                                <div className="form-row">
+                                    <label>Last Name</label>
+                                    <input type="text"
+                                    value={userData.lname}
+                                    disabled={!isEditing}
+                                    onChange={(e) => 
+                                        setUserData ({
+                                            ...userData,
+                                            lname: e.target.value
+                                        })
+                                    }
+                                    />
+                                </div>
+
+                                <div className="form-row">
+                                    <label>Email</label>
+                                    <input
+                                        value={userData.email}
+                                        disabled={!isEditing}
+                                        onChange={(e) => 
+                                            setUserData (
+                                                {...userData,
+                                                    email: e.target.value,
+                                                })
+                                            }
+                                        />
+                                    </div>
+
+                                <div className="form-row">
+                                    <label>Phone Number</label>
+                                    <input
+                                    value={userData.phone}
+                                    disabled={!isEditing}
+                                    onChange={(e) =>
+                                        setUserData (
+                                            {...userData,
+                                                phone: e.target.value
+                                            }
+                                        )
+                                    }
+                                    />
+                                </div>
+
+                                <div className="form-row">
+                                    <label>Location</label>
+                                    <input
+                                    value={userData.location}
+                                    disabled={!isEditing}
+                                    onChange={(e) => 
+                                        setUserData ({
+                                            ...userData,
+                                            location: e.target.value,
+                                        })
+                                    }
+                                    />
+                                </div>
                                     
                             </div>
                         )}
