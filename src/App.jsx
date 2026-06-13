@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Login from "./pages/Login/Login"
 import MainLayout from "./Layout/MainLayout";
-import Profile from "./pages/Profile/Profile";
+import Calendar from "./components/Calendar/Calendar";
 function App(){
   const[user, setUser] = useState(null)
   return (
@@ -12,7 +12,7 @@ function App(){
         
         <MainLayout/>
       )} */}
-      <Profile/>
+      <Calendar/>
     </>
   )
 }
