@@ -4,7 +4,7 @@ const teamData = [
         name: "Narendar Kumar",
         role: "Frontend Developer",
         email: "narendar@example.com",
-        avata: "https://i.pravatar.cc/300?img=1",
+        avatar: "https://i.pravatar.cc/300?img=1",
         tasks: 15,
         completed: 12
     },
@@ -13,7 +13,7 @@ const teamData = [
         name: "Shweta",
         role: "UI/UX Designer",
         email: "shweta@exmaple.com",
-        avata: "https://i.pravatar.cc/300?img=5",
+        avatar: "https://i.pravatar.cc/300?img=5",
         tasks: 10,
         completed: 6
     },
@@ -22,7 +22,7 @@ const teamData = [
         name: "Rahul",
         role: "Backend Developer",
         email: "ruhal@example.com",
-        avata: "https://i.pravatar.cc/300?img=12",
+        avatar: "https://i.pravatar.cc/300?img=12",
         tasks: 18,
         completed: 14
     },
@@ -31,7 +31,7 @@ const teamData = [
         name: "Priya",
         role: "Project Manager",
         email: "priya@example.com",
-        avata: "https://i.pravatar.cc/300?img=20",
+        avatar: "https://i.pravatar.cc/300?img=20",
         tasks: 20,
         completed: 19
     },
@@ -40,7 +40,7 @@ const teamData = [
         name: "Amit",
         role: "Full Stack Developer",
         email: "amit@example.com",
-        avata: "https://i.pravatar.cc/300?img=15",
+        avatar: "https://i.pravatar.cc/300?img=15",
         tasks: 16,
         completed: 13
     },{
@@ -48,7 +48,7 @@ const teamData = [
         name: "Sneha",
         role: "QA Engineer",
         email: "sneha@example.com",
-        avata: "https://i.pravatar.cc/300?img=25",
+        avatar: "https://i.pravatar.cc/300?img=25",
         tasks: 12,
         completed: 9
     }

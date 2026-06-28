@@ -53,9 +53,9 @@ const Team = () => {
       const member = {
         id: Date.now(),
         ...newMember,
-        avatar: newMember.avatar || "https://via.placeholder.com/150",
-        Tasks: 0,
-        Completed: 0
+        avatar: newMember.avatar || "https://i.pravatar.cc/300?img=51",
+        tasks: 0,
+        completed: 0
       };
     
       const updatedMembers = [...members, member];
@@ -73,7 +73,7 @@ const Team = () => {
         avatar: "",
       });
 
-      setShowModal(updatedMembers);
+      setShowModal(false);
     }
 
 
@@ -189,11 +189,11 @@ const Team = () => {
                 </p>
 
                 <p>
-                  <strong>Total Tasks:</strong> {selectedMember.Tasks}
+                  <strong>Total Tasks:</strong> {selectedMember.tasks}
                 </p>
 
                 <p>
-                  <strong>Completed:</strong> {selectedMember.Completed}
+                  <strong>Completed:</strong> {selectedMember.completed}
                 </p>
               </div>
 
