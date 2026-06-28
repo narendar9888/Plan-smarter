@@ -1,0 +1,56 @@
+.team-card {
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.6);
+  background: #fff;
+  border-radius: 16px;
+}
+
+.team-card:hover {
+  box-shadow: 0px 5px 20px rgba(0, 18, 97, 0.85);
+}
+
+.team-card img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.team-card h3 {
+  margin-top: 20px;
+}
+
+.team-card p {
+  color: #777;
+}
+
+.team-info {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0px;
+}
+
+.team-actions {
+  display: flex;
+  gap: 10PX;
+  margin-top: 20px;
+}
+
+.team-actions button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.view-btn {
+  background: #6c63ff;
+  color: white;
+}
+
+.delete-btn {
+  background: #ef4444;
+  color: white;
+}
