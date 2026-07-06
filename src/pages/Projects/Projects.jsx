@@ -12,6 +12,20 @@ function Projects() {
     const isEdit = false; // delete
 
     const [showModal, setShowModal] = useState(true); // chnage it after complete true to false
+
+
+  const openAddModal = () => {
+    setIsEdit(false);
+    setForm({
+      title: "",
+      description: "",
+      progress: 0,
+      status: "in-progress",
+      team: "",
+      deadline: "",
+    });
+    setShowModal(true);
+  };
     return(
         <div className="projects-container">
             <div className="projects-header">
@@ -91,4 +105,5 @@ function Projects() {
 }
  
 export default Projects;
+
 
