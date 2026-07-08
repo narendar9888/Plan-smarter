@@ -4,3 +4,14 @@
   background: #0f172a;
   min-height: 100vh;
 }
+
+/* Header */
+.projects-header h1 {
+  font-size: 28px;
+  margin-bottom: 5px;
+}
+
+.projects-header p {
+  color: #94a3b8;
+  margin-bottom: 20px;
+}
