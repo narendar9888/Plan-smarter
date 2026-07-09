@@ -14,6 +14,26 @@ function Projects() {
     const [showModal, setShowModal] = useState(true); // chnage it after complete true to false
 
 
+    const [projects, setProjects] = useState([
+    {
+      id: 1,
+      title: "Task Dashboard UI",
+      description: "Build modern dashboard with React and CSS",
+      progress: 75,
+      status: "in-progress",
+      team: "Frontend Team",
+      deadline: "2026-06-20",
+    },
+    {
+      id: 2,
+      title: "AI Chat Assistant",
+      description: "Smart chatbot with AI integration",
+      progress: 40,
+      status: "in-progress",
+      team: "AI Team",
+      deadline: "2026-07-05",
+    },
+  ]);
   const openAddModal = () => {
     setIsEdit(false);
     setForm({
@@ -105,5 +125,6 @@ function Projects() {
 }
  
 export default Projects;
+
 
 
