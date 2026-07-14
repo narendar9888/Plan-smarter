@@ -1,3 +1,4 @@
+import "./Projects.css";
 import { useState } from "react";
 import { 
     Search,
@@ -9,10 +10,9 @@ import {
 function Projects() {
     const [search, setSearch] = useState("");
     const [filter, setFilter] = useState("all");
-    const isEdit = false; // delete
 
     const [showModal, setShowModal] = useState(true); // chnage it after complete true to false
-
+    const [isEdit, setIsEdit] = useState(false);
 
     const [projects, setProjects] = useState([
     {
@@ -34,6 +34,19 @@ function Projects() {
       deadline: "2026-07-05",
     },
   ]);
+
+  const [editingId, setEditingId] = useState(null);
+
+  const [form, setForm] = useState({
+    title: "",
+    description: "",
+    progress: 0,
+    status: "in-progress",
+    deadline: "",
+  });
+
+  const [errors, setErrors] = useState({});
+
   const openAddModal = () => {
     setIsEdit(false);
     setForm({
@@ -125,6 +138,7 @@ function Projects() {
 }
  
 export default Projects;
+
 
 
 
