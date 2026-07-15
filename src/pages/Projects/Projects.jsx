@@ -4,6 +4,8 @@ import {
     Search,
     Filter,
     Plus,
+    Calendar,
+    User,
     X,
  } from "lucide-react";
 
@@ -11,7 +13,7 @@ function Projects() {
     const [search, setSearch] = useState("");
     const [filter, setFilter] = useState("all");
 
-    const [showModal, setShowModal] = useState(true); // chnage it after complete true to false
+    const [showModal, setShowModal] = useState(false);
     const [isEdit, setIsEdit] = useState(false);
 
     const [projects, setProjects] = useState([
@@ -33,10 +35,17 @@ function Projects() {
       team: "AI Team",
       deadline: "2026-07-05",
     },
+    {
+        id: 3,
+        title: "Portfolio Website",
+        description: "Personal portfolio with animations",
+        progress: 100,
+        status: "completed",
+        team: "Design Team",
+        deadline: "2026-07-30",
+    },
   ]);
-
-  const [editingId, setEditingId] = useState(null);
-
+  
   const [form, setForm] = useState({
     title: "",
     description: "",
@@ -44,6 +53,8 @@ function Projects() {
     status: "in-progress",
     deadline: "",
   });
+  const [editingId, setEditingId] = useState(null);
+
 
   const [errors, setErrors] = useState({});
 
@@ -86,14 +97,16 @@ function Projects() {
                     </select>
                 </div>
 
-                <button className="add-btn">
+                <button 
+                    className="add-btn"
+                    onClick={() => setShowModal(true)}
+                    >
                     <Plus size={18}/>
                     New Project
                 </button>
             </div>
 
-
-
+            
 
 
         {showModal && (
@@ -138,7 +151,6 @@ function Projects() {
 }
  
 export default Projects;
-
 
 
 

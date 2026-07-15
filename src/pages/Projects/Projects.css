@@ -1,7 +1,5 @@
 .projects-container {
   padding: 20px;
-  color: #fff;
-  background: #0f172a;
   min-height: 100vh;
 }
 
@@ -12,6 +10,6 @@
 }
 
 .projects-header p {
-  color: #94a3b8;
+  color: #4c75ae;
   margin-bottom: 20px;
 }
