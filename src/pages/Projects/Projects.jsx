@@ -58,6 +58,21 @@ function Projects() {
 
   const [errors, setErrors] = useState({});
 
+  const validate = () => {
+    let err = {};
+
+    if (! form.title.trim()) err.title = "Title is requried";
+    if (! form.description.trim()) err.description = "Description is requried";
+    if (! form.team.trim()) err.team = "Team is requried"
+    if (! form.deadline.trim()) err.deadline = "Deadline is requried"
+
+    if (form.progress < 0 || form.progress > 100)
+        err.progress = "Progress must be 0-100"
+
+    setErrors(err)
+    return Object.keys(err).length === 0;
+  };
+
   const openAddModal = () => {
     setIsEdit(false);
     setForm({
@@ -70,6 +85,30 @@ function Projects() {
     });
     setShowModal(true);
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (! validate()) return;
+
+    if (isEdit) {
+        setProjects((prev) =>
+            prev.map((p) =>
+                p.id === editingId ? {...p, ...form} : p
+            )
+        );
+    } else {
+        const newProject = {
+            ...form,
+            id: Date.now(),
+        };
+        setProjects([newProject, ...projects]);
+    }
+
+    setEditingId(null);
+    setShowModal(false);
+  };
+
     return(
         <div className="projects-container">
             <div className="projects-header">
@@ -106,7 +145,16 @@ function Projects() {
                 </button>
             </div>
 
-            
+            {/* <div className="pro-grid">
+                {filteredProjects.map((project) => (
+                    <div className="pro-card" key={project.id}>
+                        <div className="pro-top">
+                            <h3>{project.title}</h3>
+                        </div>
+                    </div>
+                ))}
+            </div> */}
+
 
 
         {showModal && (
@@ -117,16 +165,27 @@ function Projects() {
                         <X onClick={() => setShowModal(false)}/>
                     </div>
 
-                    <form className="mod-form">
+                    <form onSubmit={handleSubmit} className="mod-form">
                         <div className="form-group">
                             <label>Title</label>
                             <input 
+                                value={form.title}
+                                onChange={(e) => 
+                                    setForm({...form, title: e.target.value })
+                                }
                             />
+                            {errors.title && <span>{errors.title}</span>}
                         </div>
 
                         <div className="form-group">
                             <label>Description</label>
-                            <textarea/>
+                            <textarea
+                                value={form.description}
+                                onChange={(e) => 
+                                    setForm({...form, team: e.target.value})
+                                }
+                            />
+                            {errors.team && <span>{errors.team}</span>}
                         </div>
 
                         <div className="form-group">
